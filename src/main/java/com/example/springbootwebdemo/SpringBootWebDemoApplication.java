@@ -2,7 +2,7 @@ package com.example.springbootwebdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
 
 // The same as @Configuration @EnableAutoConfiguration @ComponentScan
 // The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.
@@ -15,5 +15,15 @@ public class SpringBootWebDemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootWebDemoApplication.class, args);
+    }
+
+    /**
+     * instantiate and configure MyBean obj
+     *
+     * @return
+     */
+    @Bean // Indicates that a method produces a bean to be managed by the Spring container.
+    public Example getExample() {
+        return new Example();
     }
 }
