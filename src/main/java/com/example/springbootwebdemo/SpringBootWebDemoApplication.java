@@ -1,5 +1,6 @@
 package com.example.springbootwebdemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,11 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootWebDemoApplication {
 
+    @Autowired
+    public SpringBootWebDemoApplication(Example exampleBean){
+
+    }
+
     /**
      * Program entry of spring application
      *
@@ -35,7 +41,7 @@ public class SpringBootWebDemoApplication {
      * @Bean Indicates that a method produces a bean to be managed by the Spring container.
      */
     @Bean
-    public Example getExample() {
+    public Example exampleBean() {
         return new Example();
     }
 }
