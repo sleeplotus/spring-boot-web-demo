@@ -20,8 +20,13 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootWebDemoApplication {
 
+    /**
+     * Spring Team recommends: "Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies".
+     *
+     * @param exampleBean bean of Example
+     */
     @Autowired
-    public SpringBootWebDemoApplication(Example exampleBean){
+    public SpringBootWebDemoApplication(Example exampleBean) {
 
     }
 
