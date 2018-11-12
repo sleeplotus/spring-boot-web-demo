@@ -1,6 +1,5 @@
 package com.example.springbootwebdemo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,16 +20,6 @@ import org.springframework.context.annotation.Bean;
 public class SpringBootWebDemoApplication {
 
     /**
-     * Spring Team recommends: "Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies".
-     *
-     * @param exampleBean bean of Example
-     */
-    @Autowired
-    public SpringBootWebDemoApplication(Example exampleBean) {
-
-    }
-
-    /**
      * Program entry of spring application
      *
      * @param args arguments
@@ -46,7 +35,32 @@ public class SpringBootWebDemoApplication {
      * @Bean Indicates that a method produces a bean to be managed by the Spring container.
      */
     @Bean
-    public Example exampleBean() {
-        return new Example();
+//    @Primary
+    public ServiceExample manualServiceExampleBean() {
+        System.out.println("=================ManualServiceExampleBean===================");
+        return new ServiceExample("ServiceExample");
+    }
+
+    @Bean
+    public ServiceExample manualServiceExampleNoArgusBean() {
+        System.out.println("=================ManualServiceExampleNoArgusBean===================");
+        return new ServiceExample();
+    }
+
+    /**
+     * SpringBoot Application在启动时，会先运行Bean方法，注册相对应的Bean
+     *
+     * @return BeanExample
+     */
+    @Bean
+    public BeanExample manualBeanExampleBean() {
+        System.out.println("=================ManualBeanExampleBean===================");
+        return new BeanExample();
+    }
+
+    @Bean
+    public RepositoryExample manualRepositoryExampleBean() {
+        System.out.println("=================ManualRepositoryExampleBean===================");
+        return new RepositoryExample("RepositoryExample");
     }
 }
